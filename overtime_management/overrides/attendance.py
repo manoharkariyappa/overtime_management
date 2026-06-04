@@ -11,10 +11,18 @@ def calculate_overtime(doc, method=None):
         "custom_working_hours"
     ) or 9
 
-    is_holiday = frappe.db.get_value(
-        "Attendance",
-        doc.name,
-        "holiday"
+    holiday_list = frappe.db.get_value(
+        "Employee",
+        doc.employee,
+        "holiday_list"
+    )
+
+    is_holiday = frappe.db.exists(
+        "Holiday",
+        {
+            "parent": holiday_list,
+            "holiday_date": doc.attendance_date
+        }
     )
 
     if is_holiday:
