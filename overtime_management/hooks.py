@@ -35,16 +35,16 @@ fixtures = [
     }
 ]
 
-doc_events = {
-    "Attendance": {
-        "validate":
-        "overtime_management.overrides.attendance.calculate_overtime"
-    },
-    "Salary Slip": {
-        "validate":
-        "overtime_management.overrides.salary_slip.calculate_salary_overtime"
-    }
-}
+# doc_events = {
+#     "Attendance": {
+#         "validate":
+#         "overtime_management.overrides.attendance.calculate_overtime"
+#     },
+#     "Salary Slip": {
+#         "validate":
+#         "overtime_management.overrides.salary_slip.calculate_salary_overtime"
+#     }
+# }
 # required_apps = []
 
 # Each item in the list will be shown as an app in the apps page
