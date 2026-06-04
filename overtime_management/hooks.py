@@ -7,44 +7,44 @@ app_license = "mit"
 
 # Apps
 # ------------------
-# fixtures = [
-#     {
-#         "dt": "Custom Field",
-#         "filters": [
-#             [
-#                 "name",
-#                 "in",
-#                 [
-#                     "Shift Type-custom_working_hours",
-#                     "Attendance-custom_overtime_hours",
-#                     "Salary Slip-custom_total_overtime_hours",
-#                     "Salary Slip-custom_overtime_amount"
-#                 ]
-#             ]
-#         ]
-#     },
-#     {
-#         "dt": "Salary Component",
-#         "filters": [
-#             [
-#                 "salary_component",
-#                 "=",
-#                 "Overtime"
-#             ]
-#         ]
-#     }
-# ]
+fixtures = [
+    {
+        "dt": "Custom Field",
+        "filters": [
+            [
+                "name",
+                "in",
+                [
+                    "Shift Type-custom_working_hours",
+                    "Attendance-custom_overtime_hours",
+                    "Salary Slip-custom_total_overtime_hours",
+                    "Salary Slip-custom_overtime_amount"
+                ]
+            ]
+        ]
+    },
+    {
+        "dt": "Salary Component",
+        "filters": [
+            [
+                "salary_component",
+                "=",
+                "Overtime"
+            ]
+        ]
+    }
+]
 
-# doc_events = {
-#     "Attendance": {
-#         "validate":
-#         "overtime_management.overrides.attendance.calculate_overtime"
-#     },
-#     "Salary Slip": {
-#         "validate":
-#         "overtime_management.overrides.salary_slip.calculate_salary_overtime"
-#     }
-# }
+doc_events = {
+    "Attendance": {
+        "validate":
+        "overtime_management.overrides.attendance.calculate_overtime"
+    },
+    "Salary Slip": {
+        "validate":
+        "overtime_management.overrides.salary_slip.calculate_salary_overtime"
+    }
+}
 # required_apps = []
 
 # Each item in the list will be shown as an app in the apps page
