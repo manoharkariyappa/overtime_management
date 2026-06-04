@@ -31,7 +31,7 @@ def calculate_salary_overtime(doc, method=None):
     basic_salary = 0
 
     for row in doc.earnings:
-        if row.salary_component == "Basic":
+        if row.salary_component in ["Basic", "Basic+DA"]:
             basic_salary = row.amount
             break
 
