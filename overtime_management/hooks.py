@@ -45,7 +45,7 @@ doc_events = {
         "overtime_management.overrides.salary_slip.calculate_salary_overtime"
     }
 }
-before_uninstall = "overtime_management.uninstall.before_uninstall"
+before_uninstall = "overtime_management.overrides.uninstall.before_uninstall"
 # required_apps = []
 
 # Each item in the list will be shown as an app in the apps page
