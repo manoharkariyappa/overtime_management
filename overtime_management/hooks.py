@@ -7,33 +7,33 @@ app_license = "mit"
 
 # Apps
 # ------------------
-fixtures = [
-    {
-        "dt": "Custom Field",
-        "filters": [
-            [
-                "name",
-                "in",
-                [
-                    "Shift Type-custom_working_hours",
-                    "Attendance-custom_overtime_hours",
-                    "Salary Slip-custom_total_overtime_hours",
-                    "Salary Slip-custom_overtime_amount"
-                ]
-            ]
-        ]
-    },
-    {
-        "dt": "Salary Component",
-        "filters": [
-            [
-                "salary_component",
-                "=",
-                "Overtime"
-            ]
-        ]
-    }
-]
+# fixtures = [
+#     {
+#         "dt": "Custom Field",
+#         "filters": [
+#             [
+#                 "name",
+#                 "in",
+#                 [
+#                     "Shift Type-custom_working_hours",
+#                     "Attendance-custom_overtime_hours",
+#                     "Salary Slip-custom_total_overtime_hours",
+#                     "Salary Slip-custom_overtime_amount"
+#                 ]
+#             ]
+#         ]
+#     },
+#     {
+#         "dt": "Salary Component",
+#         "filters": [
+#             [
+#                 "salary_component",
+#                 "=",
+#                 "Overtime"
+#             ]
+#         ]
+#     }
+# ]
 
 # doc_events = {
 #     "Attendance": {
