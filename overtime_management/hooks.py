@@ -40,9 +40,12 @@ doc_events = {
         "validate":
         "overtime_management.overrides.attendance.calculate_overtime"
     },
+    # "Salary Slip": {
+    #     "validate":
+    #     "overtime_management.overrides.salary_slip.calculate_salary_overtime"
+    # }
     "Salary Slip": {
-        "validate":
-        "overtime_management.overrides.salary_slip.calculate_salary_overtime"
+        "before_save": "overtime_management.overrides.salary_slip.calculate_salary_overtime"
     }
 }
 before_uninstall = "overtime_management.overrides.uninstall.before_uninstall"
