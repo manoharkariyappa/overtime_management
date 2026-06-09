@@ -37,7 +37,7 @@ fixtures = [
 
 doc_events = {
     "Attendance": {
-        "validate":
+        "before_save":
         "overtime_management.overrides.attendance.calculate_overtime"
     },
     # "Salary Slip": {
