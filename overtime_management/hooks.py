@@ -17,8 +17,10 @@ fixtures = [
                 [
                     "Shift Type-custom_working_hours",
                     "Attendance-custom_overtime_hours",
+                    "Attendance-custom_laps_hours",
                     "Salary Slip-custom_total_overtime_hours",
-                    "Salary Slip-custom_overtime_amount"
+                    "Salary Slip-custom_overtime_amount",
+                    "Salary Slip-custom_total_laps_hours"
                 ]
             ]
         ]

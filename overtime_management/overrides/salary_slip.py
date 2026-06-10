@@ -88,6 +88,20 @@ def calculate_salary_overtime(doc, method=None):
         doc.end_date
     ))[0][0]
 
+    total_laps = frappe.db.sql("""
+        SELECT COALESCE(SUM(custom_laps_hours), 0)
+        FROM `tabAttendance`
+        WHERE employee=%s
+        AND attendance_date BETWEEN %s AND %s
+        AND docstatus=1
+    """, (
+        doc.employee,
+        doc.start_date,
+        doc.end_date
+    ))[0][0]   
+    
+    doc.custom_total_laps_hours = total_laps
+
     # Approved Comp Off leaves during salary period
     comp_off_days = frappe.db.sql("""
         SELECT COALESCE(SUM(total_leave_days), 0)
@@ -102,6 +116,7 @@ def calculate_salary_overtime(doc, method=None):
         doc.end_date,
         doc.start_date
     ))[0][0]
+    
 
     # Convert Comp Off days to hours
     comp_off_hours = comp_off_days * shift_hours
