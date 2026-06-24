@@ -196,19 +196,16 @@ def calculate_salary_overtime(doc, method=None):
         doc.end_date
     ))[0][0]
 
-    # doc.custom_total_laps_hours = total_laps
     allowed_permission_hours = frappe.db.get_value(
-       "Shift Type",
+        "Shift Type",
         employee_shift,
         "custom_monthly_permission_hours"
     ) or 0
 
-    final_laps_hours = max(
-       0,
-       float(total_laps) - float(allowed_permission_hours)
+    doc.custom_total_laps_hours = max(
+        0,
+        float(total_laps) - float(allowed_permission_hours)
     )
-
-    doc.custom_total_laps_hours = final_laps_hours
 
     comp_off_days = frappe.db.sql("""
         SELECT COALESCE(SUM(total_leave_days), 0)
@@ -247,9 +244,7 @@ def calculate_salary_overtime(doc, method=None):
         holiday_worked_days - comp_off_days
     )
 
-    payable_ot_hours = total_ot
-
-    doc.custom_total_overtime_hours = payable_ot_hours
+    doc.custom_total_overtime_hours = total_ot
 
     basic_salary = 0
 
@@ -263,19 +258,27 @@ def calculate_salary_overtime(doc, method=None):
     daily_rate = basic_salary / payment_days
     hourly_rate = daily_rate / shift_hours
 
-    overtime_amount = hourly_rate * payable_ot_hours
+    overtime_amount = hourly_rate * total_ot
 
     doc.custom_overtime_amount = overtime_amount
+
+    found = False
 
     for row in doc.earnings:
         if row.salary_component == "Overtime":
             row.amount = overtime_amount
+            found = True
             break
 
+    if not found and overtime_amount > 0:
+        doc.append("earnings", {
+            "salary_component": "Overtime",
+            "amount": overtime_amount
+        })
 
-        
-        
+
 def set_30_day_month(doc, method=None):
+
     doc.total_working_days = 30
 
     absent_days = doc.absent_days or 0
