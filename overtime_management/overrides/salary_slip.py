@@ -288,3 +288,10 @@ def set_30_day_month(doc, method=None):
         0,
         30 - absent_days - lwp
     )
+
+    doc.db_set("total_working_days", 30, update_modified=False)
+    doc.db_set(
+        "payment_days",
+        max(0, 30 - absent_days - lwp),
+        update_modified=False
+    )
