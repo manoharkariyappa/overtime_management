@@ -160,7 +160,7 @@ import frappe
 
 def calculate_salary_overtime(doc, method=None):
     # Force Working Days to 30
-    doc.working_days = 30
+    doc.total_working_days = 30
     employee_shift = frappe.db.get_value(
         "Employee",
         doc.employee,
