@@ -159,8 +159,7 @@ import frappe
 
 
 def calculate_salary_overtime(doc, method=None):
-    # Force Working Days to 30
-    doc.total_working_days = 30
+
     employee_shift = frappe.db.get_value(
         "Employee",
         doc.employee,
@@ -272,3 +271,17 @@ def calculate_salary_overtime(doc, method=None):
         if row.salary_component == "Overtime":
             row.amount = overtime_amount
             break
+
+
+        
+        
+def set_30_day_month(doc, method=None):
+    doc.total_working_days = 30
+
+    absent_days = doc.absent_days or 0
+    lwp = doc.leave_without_pay or 0
+
+    doc.payment_days = max(
+        0,
+        30 - absent_days - lwp
+    )
