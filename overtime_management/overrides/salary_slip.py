@@ -279,19 +279,14 @@ def calculate_salary_overtime(doc, method=None):
 
 def set_30_day_month(doc, method=None):
 
-    doc.total_working_days = 30
+# Always use 30 working days
+ doc.total_working_days = 30
 
-    absent_days = doc.absent_days or 0
-    lwp = doc.leave_without_pay or 0
+ absent_days = float(doc.absent_days or 0)
+ lwp = float(doc.leave_without_pay or 0)
 
-    doc.payment_days = max(
-        0,
-        30 - absent_days - lwp
-    )
-
-    doc.db_set("total_working_days", 30, update_modified=False)
-    doc.db_set(
-        "payment_days",
-        max(0, 30 - absent_days - lwp),
-        update_modified=False
-    )
+# Payment days = 30 - absent - LWP
+ doc.payment_days = max(
+    0,
+    30 - absent_days - lwp
+ )
