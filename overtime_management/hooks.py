@@ -16,11 +16,14 @@ fixtures = [
                 "in",
                 [
                     "Shift Type-custom_working_hours",
+                    "Shift Type-custom_monthly_permission_hours",
                     "Attendance-custom_overtime_hours",
                     "Attendance-custom_laps_hours",
                     "Salary Slip-custom_total_overtime_hours",
                     "Salary Slip-custom_overtime_amount",
-                    "Salary Slip-custom_total_laps_hours"
+                    "Salary Slip-custom_total_laps_hours",
+                    "Salary Slip-custom_holiday_working_days"
+                    
                 ]
             ]
         ]
@@ -43,7 +46,7 @@ doc_events = {
         "overtime_management.overrides.attendance.calculate_overtime"
     },
     "Salary Slip": {
-        "before_validate":
+        "validate":
         "overtime_management.overrides.salary_slip.calculate_salary_overtime"
     }
     # "Salary Slip": {

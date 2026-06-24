@@ -72,10 +72,18 @@ def calculate_overtime(doc, method=None):
     working_hours = float(doc.working_hours)
     shift_hours = float(shift_hours)
 
+    # if is_holiday:
+    #     # On holiday, all worked hours are overtime
+    #     doc.custom_overtime_hours = working_hours
+    #     doc.custom_laps_hours = 0
     if is_holiday:
-        # On holiday, all worked hours are overtime
-        doc.custom_overtime_hours = working_hours
-        doc.custom_laps_hours = 0
+    # Employee worked on holiday
+    # OT only after completing shift hours
+         doc.custom_overtime_hours = max(
+           0,
+            working_hours - shift_hours
+         )
+         doc.custom_laps_hours = 0
     else:
         # Overtime
         doc.custom_overtime_hours = max(
