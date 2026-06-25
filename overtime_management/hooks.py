@@ -47,8 +47,7 @@ doc_events = {
     },
     "Salary Slip": {
         "before_validate": [
-        "overtime_management.overrides.salary_slip.calculate_salary_overtime",
-        "overtime_management.overrides.salary_slip.set_30_day_month"
+        "overtime_management.overrides.salary_slip.calculate_salary_overtime"
         ]
     }
     # "Salary Slip": {
